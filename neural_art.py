@@ -88,7 +88,7 @@ def main():
 
 
     for file in fileList:
-        content_image = imread(os.path.join("content/", file))
+        content_image = imread(os.path.join("content", file))
         style_images = imread("style/1-style.jpg")
 
         width = options.width
@@ -140,10 +140,10 @@ def main():
                 if options.checkpoint_output:
                     output_file = options.checkpoint_output % iteration
             else:
-                output_file = options.output
+                output_file = os.path.join("output", file)
             if output_file:
                 imsave(output_file, image)
-                imremove(os.path.join("content/", file))
+                imremove(os.path.join("content", file))
 
 
 def imread(path):
